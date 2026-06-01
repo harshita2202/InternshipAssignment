@@ -9,7 +9,10 @@ export class OrdersController {
   getOrders(): Order[] {
     return this.ordersService.findAll();
   }
-
+  @Get('summary')
+ getGarmentStatusSummary(){
+     return this.ordersService.getGarmentStatusSummary();
+  }
   @Get(':id')
   getOrder(@Param('id') id: string): Order | { error: string } {
     const order = this.ordersService.findOne(id);
@@ -18,4 +21,6 @@ export class OrdersController {
     }
     return order;
   }
+
+
 }
